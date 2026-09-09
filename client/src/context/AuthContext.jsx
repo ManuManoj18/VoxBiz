@@ -59,18 +59,22 @@ export const AuthProvider = ({ children }) => {
 
 const logout = async () => {
   try {
-    // 🔥 1. Logout from Firebase (Google)
-    await signOut(auth);
-
-    // 🔐 2. Logout from backend (cookie)
-    await fetch(`${API_BASE_URL}/api/auth/logout`, {
+    // 1. Logout from backend and clear JWT cookie
+    const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
+
+    if (!response.ok) {
+      console.error("Backend logout failed");
+    }
+
+    // 2. Logout from Firebase
+    await signOut(auth);
   } catch (err) {
     console.error("Logout error:", err);
   } finally {
-    // 🧹 3. Clear app state
+    // 3. Clear frontend authentication state
     setUser(null);
     setIsAuthenticated(false);
   }

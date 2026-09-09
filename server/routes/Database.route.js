@@ -9,7 +9,7 @@ router.post("/create", AuthUser, createDatabase);
 router.post("/connect", AuthUser, connectDatabase);
 router.post("/disconnect", AuthUser, disconnectDatabase);
 router.get("/list", AuthUser, listDatabases);
-router.get('/db-info/:id', getDatabaseInfo);
+router.get('/db-info/:id', AuthUser, getDatabaseInfo);
 router.get('/natural-descriptions', AuthUser,getDatabaseNaturalDescriptions);
 
 

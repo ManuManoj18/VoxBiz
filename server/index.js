@@ -29,7 +29,7 @@ sequelize.sync({ alter: true })  // or just sync()
   .catch(err => console.error("❌ DB Sync Error:", err));
 
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 
 // dababase model sync
 // (async () => {

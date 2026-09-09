@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 
 dotenv.config();   // MUST be before using process.env
 
-console.log("DB_PASSWORD:", process.env.DB_PASSWORD); // Debug
+ // Debug
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,

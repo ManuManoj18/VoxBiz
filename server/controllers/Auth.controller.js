@@ -10,7 +10,7 @@ dotenv.config();
 const me = async (req, res) => {
   try {
     const token = req.cookies.token;
-    console.log("Token from cookies:", token);
+    
     if (!token) return res.status(401).json({ message: 'Not authenticated' });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

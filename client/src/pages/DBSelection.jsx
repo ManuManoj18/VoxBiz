@@ -147,7 +147,9 @@ const DatabaseDashboard = () => {
       console.log('Selected DB ID:', dbId);
 
       // Fetch database info from the backend
-  const response = await fetch(`${API_BASE_URL}/api/database/db-info/${dbId}`);
+  const response = await fetch(`${API_BASE_URL}/api/database/db-info/${dbId}`, {
+  credentials: "include",
+});
 
       if (!response.ok) {
         throw new Error('Failed to fetch database information');
