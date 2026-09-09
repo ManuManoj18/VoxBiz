@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, password) => {
+  const login = async (emailOrUsername, password) => {
     try {
   const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
@@ -42,10 +42,9 @@ export const AuthProvider = ({ children }) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ email, password }),
+       body: JSON.stringify({ emailOrUsername, password }),
       });
       const data = await res.json();
-      console.log("Login response:", data);
       if (!res.ok) throw new Error(data.message || "Login failed");
       setUser(data.user);
       setIsAuthenticated(true);
